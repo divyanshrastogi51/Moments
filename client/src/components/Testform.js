@@ -2,24 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { fetchPosts, createPost } from '../api';
 
 const Testform = () => {
+  const [data, setData] = useState([])
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   useEffect(() => {
 
     const fetchposts = async () => {
       const res = await fetchPosts();
-      console.log(res.data)
+      setData(res.data);
     }
     fetchposts();
-  }, []);
+  });
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     alert(`Submitting Name ${fname}`);
     const payload = { fname, lname }
-    const res = await createPost(payload);
-    console.log(res.data);
+    await createPost(payload);
+    setFname('');
+    setLname('');
   };
+
 
   return (
     <div>
@@ -42,9 +45,14 @@ const Testform = () => {
         </label>
         <input type="submit" value="Submit" />
       </form>
-  );
+      <div>
+        <h3>Past Data</h3>
+        {data.map((name, index) => (
+          <p> {name.fname}  {name.lname}!</p>
+        ))}
+      </div>
     </div>
   )
 };
 
-export default Testform
+export default Testform;
