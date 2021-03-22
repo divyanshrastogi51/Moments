@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchPosts, createPost } from '../api';
-
+import '../App.css'
 const Testform = () => {
   const [data, setData] = useState([])
   const [fname, setFname] = useState("");
@@ -16,8 +16,7 @@ const Testform = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    alert(`Submitting Name ${fname}`);
-    const payload = { fname, lname }
+    const payload = { fname, lname };
     await createPost(payload);
     setFname('');
     setLname('');
@@ -25,7 +24,7 @@ const Testform = () => {
 
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
@@ -48,7 +47,7 @@ const Testform = () => {
       <div>
         <h3>Past Data</h3>
         {data.map((name, index) => (
-          <p> {name.fname}  {name.lname}!</p>
+          <p> {name.fname}  {name.lname}</p>
         ))}
       </div>
     </div>
