@@ -7,18 +7,17 @@ const router = express.Router();
 
 export const getPosts = async (req, res) => {
   try {
-    const Schema = await Schema.find();
-
-    res.status(200).json(Schema);
+    const schema = await Schema.find();
+    res.status(200).json(schema);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 }
 
 export const createPost = async (req, res) => {
-  const { fname,lname } = req.body;
+  const { fname, lname } = req.body;
 
-  const newPostMessage = new Schema({ fname , lname })
+  const newPostMessage = new Schema({ fname, lname })
 
   try {
     await newPostMessage.save();
