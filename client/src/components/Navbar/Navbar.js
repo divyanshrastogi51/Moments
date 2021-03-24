@@ -35,7 +35,7 @@ const Navbar = () => {
         <AppBar className={classes.appBar} position="static" color="inherit">
             <div className={classes.brandContainer}>
                 <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
-                    Memories
+                    Moments
 				</Typography>
                 <img className={classes.image} src={memories} alt="memories" width="60" />
             </div>
@@ -48,8 +48,8 @@ const Navbar = () => {
                     </div>
 
                 ) : (
-                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-                    )}
+                    <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+                )}
             </Toolbar>
         </AppBar>
     )
